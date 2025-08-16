@@ -1,0 +1,69 @@
+services:
+  database:
+    image: postgres:14-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-taskdb}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks: [app-net]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 10s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      # For db.js (both styles supported)
+      DB_HOST: database
+      DB_PORT: "5432"
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      DB_NAME: ${DB_NAME:-taskdb}
+      # Or single URL if you prefer:
+      # DATABASE_URL: postgres://${DB_USER:-postgres}:${DB_PASSWORD:-postgres}@database:5432/${DB_NAME:-taskdb}
+      PORT: "3001"
+    depends_on:
+      database:
+        condition: service_healthy
+    networks: [app-net]
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:3001/api/health"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_BACKEND_URL: http://localhost:3001
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks: [app-net]
+
+networks:
+  app-net:
+    driver: bridge
+
+volumes:
+  postgres-data:
+    driver: local
+
