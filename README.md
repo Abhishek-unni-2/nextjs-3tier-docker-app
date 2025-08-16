@@ -98,3 +98,7 @@ Login with:
 
 username: admin
 password: admin
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/08438dd7-e86a-4f0f-8003-828616d3d061" />
+
+
