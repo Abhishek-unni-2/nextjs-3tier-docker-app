@@ -102,3 +102,6 @@ password: admin
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/08438dd7-e86a-4f0f-8003-828616d3d061" />
 
 
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/f5cfa21a-2a94-45b8-be29-c887af8b24cf" />
+
+<img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/762f03a1-f0bf-4d1b-9c78-da236ff143b6" />
