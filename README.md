@@ -1,16 +1,25 @@
-🚀 Three-Tier Next.js Application with Docker
+Perfect 👍 You already have a great draft.
+Here’s the same **README.md** rewritten into a clean GitHub-friendly format with proper Markdown styling and sections 👇
 
-This project demonstrates a three-tier architecture using:
+---
 
-Frontend (Presentation Layer): Next.js
+```markdown
+# 🚀 Three-Tier Next.js Application with Docker
 
-Backend (Application Layer): Express.js + Node.js
+This project demonstrates a **three-tier architecture** using:
 
-Database (Data Layer): PostgreSQL with initialization script
+- **Frontend (Presentation Layer):** Next.js  
+- **Backend (Application Layer):** Express.js + Node.js  
+- **Database (Data Layer):** PostgreSQL with initialization script  
 
-All components are containerized using Docker Compose.
+All components are containerized using **Docker Compose**.
 
-📂 Project Structure
+---
+
+## 📂 Project Structure
+
+```
+
 task3/
 │── docker-compose.yml
 │
@@ -35,69 +44,110 @@ task3/
 │
 └── README.md
 
-⚙️ Setup & Installation
-1️⃣ Clone the repo
+````
+
+---
+
+## ⚙️ Setup & Installation
+
+### 1️⃣ Clone the repo
+
+```bash
 git clone https://github.com/<your-username>/three-tier-nextjs-app.git
 cd three-tier-nextjs-app
+````
 
-2️⃣ Run with Docker Compose
+### 2️⃣ Run with Docker Compose
+
+```bash
 docker-compose up --build
-
+```
 
 This will start:
 
-Frontend → http://localhost:3000
+* **Frontend** → [http://localhost:3000](http://localhost:3000)
+* **Backend** → [http://localhost:3001](http://localhost:3001)
+* **Database (Postgres)** → port `5432`
 
-Backend → http://localhost:3001
+---
 
-Database (Postgres) → port 5432
+## 🗄️ Database Initialization
 
-🗄️ Database Initialization
+The database is automatically seeded using `database/init.sql`:
 
-The database is automatically seeded using database/init.sql:
+* `users` table → with default user `admin/admin`
+* `employees` table → with sample employees
 
-users table → with default user admin/admin
+---
 
-employees table → with sample employees
+## 🔑 API Endpoints (Backend)
 
-🔑 API Endpoints (Backend)
-Method	Endpoint	Description
-GET	/api/health	Check backend health
-GET	/api/database-status	Test DB connection
-POST	/api/login	User login ({ username, password })
-POST	/api/employees	Add employee ({ name, email, position })
-GET	/api/employees	Get all employees
-🖥️ Frontend Pages
+| Method | Endpoint               | Description                                |
+| ------ | ---------------------- | ------------------------------------------ |
+| GET    | `/api/health`          | Check backend health                       |
+| GET    | `/api/database-status` | Test DB connection                         |
+| POST   | `/api/login`           | User login (`{ username, password }`)      |
+| POST   | `/api/employees`       | Add employee (`{ name, email, position }`) |
+| GET    | `/api/employees`       | Get all employees                          |
 
-/login → Login page (authenticates via backend)
+---
 
-/employees → Add + List employees
+## 🖥️ Frontend Pages
 
-/ → Home page
+* `/login` → Login page (authenticates via backend)
+* `/employees` → Add + List employees
+* `/` → Home page
 
-🐳 Docker Services
-services:
-  frontend: Next.js app on port 3000
-  backend: Express.js API on port 3001
-  database: PostgreSQL with seed script
+---
 
-✅ How to Use
+## 🐳 Docker Services
 
-Start containers:
+* **frontend** → Next.js app on port `3000`
+* **backend** → Express.js API on port `3001`
+* **database** → PostgreSQL with seed script
 
+---
+
+## ✅ How to Use
+
+### Start containers:
+
+```bash
 docker-compose up --build
+```
 
+### Open browser:
 
-Open browser:
+* Frontend → [http://localhost:3000](http://localhost:3000)
+* Backend API → [http://localhost:3001](http://localhost:3001)
 
-Frontend → http://localhost:3000
+### Login with credentials:
 
-Backend API → http://localhost:3001
-
-Login with:
-
+```
 username: admin
 password: admin
+```
+
+---
+
+## 📌 Future Improvements
+
+* Add JWT authentication
+* Use bcrypt for password hashing
+* Add persistent volumes for DB
+* CI/CD pipeline with GitHub Actions
+
+---
+
+```
+
+---
+
+This is **clean, professional, and GitHub-ready** ✅.  
+
+Do you want me to also add **screenshots section** (with placeholders) so you can later attach UI screenshots (login page, employees page) in your README?
+```
+
 
 <img width="1600" height="900" alt="image" src="https://github.com/user-attachments/assets/08438dd7-e86a-4f0f-8003-828616d3d061" />
 
